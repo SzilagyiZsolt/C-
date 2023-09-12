@@ -13,13 +13,17 @@ namespace ConsoleApp1
             //két szám bekérése és összeadása
             int elso, masodik; //deklarálás
             Console.WriteLine("Két szám összeadása");
-            Console.WriteLine("A továbbhaladáshoz adj meg egy számot majd nyomd meg az entert");
-            elso=int.Parse(Console.ReadLine());
-            Console.WriteLine("A továbbhaladáshoz adj meg egy másik számot majd nyomd meg az entert");
-            masodik=int.Parse(Console.ReadLine());
+            elso=szamotKer("Adj meg egy számot: ");
+            masodik=szamotKer("Adj meg egy másik számot: ");
             Console.WriteLine("A két szám összege: " +(elso+masodik).ToString());
-            Console.WriteLine("A program bezárásához nyomd meg az entert");
             Console.ReadKey();
+        }
+        private static int szamotKer(string szo)
+        {
+            int bekertSzam;
+            Console.Write(szo);
+            bekertSzam=int.Parse(Console.ReadLine());
+            return bekertSzam;
         }
     }
 }
