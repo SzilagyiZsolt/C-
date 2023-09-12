@@ -15,8 +15,47 @@ namespace Bérek2020
             adatokbeolvasása();
             feladatok3();
             feladatok4();
+            feladatok5();
+            feladatok6();
+            feladatok7();
             Console.ReadKey();
         }
+
+        private static void feladatok6()
+        {                
+            Console.WriteLine("6. Feladat: ");
+            foreach (var item in adatok)
+            {
+
+                if (item.Részleg=="beszerzés")
+                {
+                    Console.WriteLine("ok");
+                }
+                else
+                {
+                    Console.WriteLine("A megadott részleg nem létezik a cégnél!");
+                }
+            }
+            
+        }
+
+        private static void feladatok7()
+        {
+            Console.WriteLine("7. Feladat: Statisztika");
+            foreach (var item in adatok.GroupBy(a => a.Részleg).Select(b => new { reszleg = b.Key, db = b.Count() }))
+            {
+            Console.WriteLine($"\t{item.reszleg} : {item.db} fő");
+            }
+        }
+
+        public static string feladatok5()
+        {
+            Console.Write("5. Feladat: ");
+            Console.WriteLine($"\tKérem egy részleg nevét: ");
+            string reszleg=Console.ReadLine();
+            return reszleg;
+        }
+
         private static void feladatok3()
         {
             Console.Write("3. Feladat: ");
@@ -24,15 +63,15 @@ namespace Bérek2020
         }
         private static void feladatok4()
         {
-            int ossz=0;
-            int atlag;
+            double ossz=0;
+            double atlag;
             Console.Write("4. Feladat: ");
             foreach (var item in adatok)
             {
                 ossz+=item.Bér;
             }
-            atlag= ossz/adatok.Count;
-            Console.WriteLine($"\tBérek átlaga: {atlag}");
+            atlag= ossz/adatok.Count/1000;
+            Console.WriteLine($"\tBérek átlaga: {Math.Round(atlag,1)} eFt");
         }
         private static void adatokbeolvasása()
         {
